@@ -4,11 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Monsters : MonoBehaviour {
-    public int curHp;
+    public float curHp;
     public int maxHp;
     public int moneyToGive;
     public int baseDamage;
     public int damageAdd;
+    public int curLvl;
     public Image healthBarFill;
     public static Monsters instance;
 
@@ -16,8 +17,16 @@ public class Monsters : MonoBehaviour {
     {
         instance = this;
     }
+    public void Stat(int lvl)
+    {
+        curLvl = lvl;
+        curHp = curHp * lvl;
+        maxHp = maxHp * lvl;
+        moneyToGive = moneyToGive * lvl;
+        Debug.Log(curLvl);
+}
 
-    public void DamageAutoclic(int damageTaken) {
+    public void DamageAutoclic(float damageTaken) {
         curHp = curHp - damageTaken;
         healthBarFill.fillAmount = (float)curHp/(float)maxHp;
         if(curHp <= 0){
@@ -40,5 +49,6 @@ public class Monsters : MonoBehaviour {
     public void Killed() {
         GameManager.instance.AddMoney(moneyToGive);
         MonstersManager.instance.Replace(gameObject);
+        MonstersManager.instance.LevelUp(curLvl);
     }
 }

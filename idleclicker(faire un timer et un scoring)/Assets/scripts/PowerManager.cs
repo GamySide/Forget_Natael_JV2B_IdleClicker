@@ -6,7 +6,7 @@ using TMPro;
 
 public class PowerManager : MonoBehaviour {
     public int curLvl = 0;
-    public int cost = 10;
+    public int cost = 2;
     public int myMoney;
     public static PowerManager instance;
     public TextMeshProUGUI pwrLvlText;

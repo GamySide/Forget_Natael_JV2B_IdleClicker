@@ -8,9 +8,11 @@ public class MonstersManager : MonoBehaviour {
     public Monsters curMonster;
     public Transform canvas;
     public static MonstersManager instance;
+    public int lvl;
 
     void Awake() {
         instance = this;
+        lvl = 1;
     }
 
     // Spawn Monster
@@ -25,6 +27,15 @@ public class MonstersManager : MonoBehaviour {
         Destroy(monster);
         Spawn();
     }
+    public void LevelUp(int lvlNow)
+    {
+        lvl = lvlNow + 1;
+        Monsters.instance.Stat(lvl);
+    }
+    /*public void Update()
+    {
+        
+    }*/
 
 
 }   

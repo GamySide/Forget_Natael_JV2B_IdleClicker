@@ -6,10 +6,10 @@ using TMPro;
 
 public class GameManager : MonoBehaviour {
 
-    public int money = 2;
+    public int money = 0;
     public TextMeshProUGUI moneyText;
     public static GameManager instance;
-
+    public int curMonsterLvl;
     void Awake () {
         instance = this;
     }
