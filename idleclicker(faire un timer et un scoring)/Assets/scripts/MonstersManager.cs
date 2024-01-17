@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class MonstersManager : MonoBehaviour {
     
@@ -13,6 +15,7 @@ public class MonstersManager : MonoBehaviour {
     void Awake() {
         instance = this;
         lvl = 1;
+        Spawn();
     }
 
     // Spawn Monster
@@ -30,6 +33,14 @@ public class MonstersManager : MonoBehaviour {
     public void LevelUp(int lvlNow)
     {
         lvl = lvlNow + 1;
+        Monsters.instance.Stat(lvl);
+    }
+    public void LevelDown(int lvlNow)
+    {
+        if (lvl > 1)
+        {
+            lvl = lvlNow - 1;
+        }
         Monsters.instance.Stat(lvl);
     }
     /*public void Update()

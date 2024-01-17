@@ -24,14 +24,13 @@ public class PowerManager : MonoBehaviour {
     public void Upgrade()
     {
         if (myMoney >= cost) {
-            Debug.Log(myMoney);
             GameManager.instance.TakeMoney(cost);
             myMoney = myMoney - cost;
             curLvl++;
             cost = cost + 2 * curLvl;
             pwrCostText.text = "prix : " + cost.ToString() + "€";
             pwrLvlText.text = "lvl: " + curLvl.ToString();
-           
+            Debug.Log(myMoney);
         }
         /*Debug.Log("coucou");
         GameManager.instance.TakeMoney(cost);
